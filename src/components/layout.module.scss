@@ -9,10 +9,19 @@
     align-items: stretch;
     justify-content: space-between;
     flex-grow: grow;
+
+    @media screen and (max-width: 560px) {
+        display: block;
+        margin: 5px 0;
+    }
 }
 
 .w33 {
     width: 33%;
+
+    @media screen and (max-width: 560px) {
+        width: 100%;
+    }
 }
 
 .footer {
