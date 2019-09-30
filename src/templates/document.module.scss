@@ -1,0 +1,90 @@
+.container {
+    width: 94%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.split {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-grow: grow;
+}
+
+.w50 {
+    width: 50%;
+}
+
+.header {
+    background-color: #227FCA;
+    padding: 40px 0 120px;
+    color: #fff;
+    
+    .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 60px;
+
+        .siteName {
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+}
+
+.document {
+    background-color: #fff;
+    padding: 40px 50px;
+    border-radius: 4px;
+    margin-top: -120px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+
+    @media print {
+        & {
+            padding: 0;
+            box-shadow: none;
+        }
+    }
+}
+
+.tasks {
+    padding-bottom: 30px;
+
+    .head {
+        border-bottom: 2px solid #666;
+        font-weight: 600;
+        padding: 20px 0 8px;
+    }
+
+    .row {
+        border-bottom: 1px solid #ddd;
+        padding: 8px 0;
+    }
+
+    .totals {
+        padding: 8px 0;
+        font-weight: bold;
+    }
+
+    .desc1 {
+        width: 70%;
+    }
+
+    .hours {
+        width: 10%;
+        text-align: right;
+    }
+
+    .rate {
+        width: 10%;
+        text-align: right;
+    }
+
+    .total {
+        width: 10%;
+        text-align: right;
+    }
+}
