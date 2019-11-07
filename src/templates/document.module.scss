@@ -1,7 +1,12 @@
 .container {
     width: 94%;
-    max-width: 960px;
+    max-width: 760px;
     margin: 0 auto;
+
+    @media print {
+        width: 100%;
+        max-width: 100%;
+    }
 }
 
 .split {
@@ -76,6 +81,7 @@
     .totals {
         padding: 10px 0;
         font-weight: bold;
+        text-align: right;
     }
 
     .desc1 {

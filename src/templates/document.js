@@ -74,9 +74,23 @@ const Page = props => {
                   <div className={s.rate}>{service.rate}$</div>
                   <div className={s.total}>{service.hours * service.rate}$</div>
                 </div>))}
+                {doc.type === "facture" && <>
+                  <div className={`${s.split} ${s.totals}`}>
+                    <div className={s.desc1}>Premier paiement</div>
+                    <div className={s.hours}></div>
+                    <div className={s.rate}>{doc.pourcentage}%</div>
+                    <div className={s.total}>{Math.round(aTotal * (doc.pourcentage / 100))}$</div>
+                  </div>
+                  <div className={`${s.split} ${s.totals}`}>
+                    <div className={s.desc1}>Deuxième paiement</div>
+                    <div className={s.hours}></div>
+                    <div className={s.rate}>{100-doc.pourcentage}%</div>
+                    <div className={s.total}>{aTotal - Math.round(aTotal * (doc.pourcentage / 100))}$</div>
+                  </div>
+                </>}
                 <div className={`${s.split} ${s.totals}`}>
-                  <div className={s.desc1}></div>
-                  <div className={s.hours}>{hTotal}h</div>
+                  <div className={s.desc1}>Total</div>
+                  <div className={s.hours}></div>
                   <div className={s.rate}></div>
                   <div className={s.total}>{aTotal}$</div>
                 </div>
@@ -85,8 +99,11 @@ const Page = props => {
               <b>Conditions de paiements</b>
               <small>{RichText.render(doc.paymentTerms)}</small>
 
-              <b>Conditions du contrat</b>
-              <small>{RichText.render(doc.terms)}</small>
+              {doc.type === "soumission" && <>
+                <b>Conditions du contrat</b>
+                <small>{RichText.render(doc.terms)}</small>
+              </>}
+              
 
             </div>
           </div>
@@ -107,6 +124,7 @@ export const query = graphql`
         type
         paymentTerms
         terms
+        pourcentage
         services {
           desc1
           hours

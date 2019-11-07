@@ -9,7 +9,7 @@
 const path = require("path")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const pages = await graphql(`
+  const soumissions = await graphql(`
     {
         prismic {
             allDocuments(where: {type: "soumission"}, lang: "fr-ca") {
@@ -25,9 +25,27 @@ exports.createPages = async ({ graphql, actions }) => {
         }
     }
   `)
+  const factures = await graphql(`
+    {
+        prismic {
+            allDocuments(where: {type: "facture"}, lang: "fr-ca") {
+                edges {
+                    node {
+                        type
+                        _meta {
+                            uid
+                        }
+                    }
+                }
+            }
+        }
+    }
+  `)
   const template = path.resolve("src/templates/document.js")
 
-  pages.data.prismic.allDocuments.edges.forEach(edge => {
+  const pages = [...soumissions.data.prismic.allDocuments.edges, ...factures.data.prismic.allDocuments.edges]
+
+  pages.forEach(edge => {
     createPage({
       path: `/${edge.node.type}/${edge.node._meta.uid}`,
       component: template,
