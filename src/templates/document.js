@@ -135,6 +135,7 @@ export const query = graphql`
         paymentTerms
         terms
         pourcentage
+        precedentPayment
         services {
           desc1
           hours
