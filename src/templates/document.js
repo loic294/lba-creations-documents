@@ -77,10 +77,16 @@ const Page = props => {
 
                 {doc.precedentPayment && <>
                   <div className={`${s.split} ${s.totals}`}>
-                    <div className={s.desc1}>Paiement précédent(s)</div>
+                    <div className={s.desc1}>Total</div>
                     <div className={s.hours}></div>
-                    <div className={s.rate}>{doc.pourcentage}%</div>
-                    <div className={s.total}>{doc.precedentPayment.toFixed(2)}$</div>
+                    <div className={s.rate}></div>
+                    <div className={s.total}>{aTotal}$</div>
+                  </div>
+                  <div className={`${s.split} ${s.totals}`}>
+                    <div className={s.desc1}>Paiement(s) précédent(s)</div>
+                    <div className={s.hours}></div>
+                    <div className={s.rate}></div>
+                    <div className={s.total}>{doc.precedentPayment}$</div>
                   </div>
                 </>}
 
@@ -99,7 +105,7 @@ const Page = props => {
                   </div>
                 </>}
                 <div className={`${s.split} ${s.totals}`}>
-                  <div className={s.desc1}>Total</div>
+                  <div className={s.desc1}>Total à payer</div>
                   <div className={s.hours}></div>
                   <div className={s.rate}></div>
                   <div className={s.total}>{aTotal - (doc.precedentPayment || 0)}$</div>
