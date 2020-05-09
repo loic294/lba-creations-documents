@@ -69,7 +69,7 @@ const Page = props => {
                   <div className={s.total}>Total</div>
                 </div>
                 {doc.services.map((service, i) => (<div className={`${s.split} ${s.row}`} key={i}>
-                  <div className={s.desc1}><small>{RichText.asText(service.desc1)}</small></div>
+                  <div className={s.desc1}><small>{RichText.render(service.desc1)}</small></div>
                   <div className={s.hours}>{service.hide_rate === "false" ? `${service.hours}h` : '-'}</div>
                   <div className={s.rate}>{service.rate}$</div>
                   <div className={s.total}>{service.hours * service.rate}$</div>
