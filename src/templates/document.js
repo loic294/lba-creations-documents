@@ -74,6 +74,16 @@ const Page = props => {
                   <div className={s.rate}>{service.rate}$</div>
                   <div className={s.total}>{service.hours * service.rate}$</div>
                 </div>))}
+
+                {doc.precedentPayment && <>
+                  <div className={`${s.split} ${s.totals}`}>
+                    <div className={s.desc1}>Paiement précédent(s)</div>
+                    <div className={s.hours}></div>
+                    <div className={s.rate}>{doc.pourcentage}%</div>
+                    <div className={s.total}>{doc.precedentPayment.toFixed(2)}$</div>
+                  </div>
+                </>}
+
                 {doc.type === "facture" && <>
                   <div className={`${s.split} ${s.totals}`}>
                     <div className={s.desc1}>Premier paiement</div>
@@ -92,7 +102,7 @@ const Page = props => {
                   <div className={s.desc1}>Total</div>
                   <div className={s.hours}></div>
                   <div className={s.rate}></div>
-                  <div className={s.total}>{aTotal}$</div>
+                  <div className={s.total}>{aTotal - (doc.precedentPayment || 0)}$</div>
                 </div>
               </div>
 
